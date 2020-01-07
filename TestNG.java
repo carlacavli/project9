@@ -13,17 +13,14 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 public class TestNG {
-
     private WebDriver driver;
     private WebDriverWait wait;
 
     @Parameters({"username", "password"})
     @BeforeClass
     public void setup(String username, String password) {
-
         System.setProperty("webdriver.chrome.driver", "/Users/muberracavli/Desktop/TechnoStudy/chrome driver/chromedriver");
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://test-basqar.mersys.io");
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, 5);
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
@@ -35,22 +32,30 @@ public class TestNG {
     }
     @Test
     public void main() {
-        // to select "Budget", the first child of group items
+
         driver.findElement(By.cssSelector(".group-items > :nth-child(6)")).click();
-        // to select "Setup", the first child of  the first child of group items
         driver.findElement(By.cssSelector(".group-items > :nth-child(6) > .children > :nth-child(1)")).click();
-        // to select "budget groups ", the forth child of the first child of  the first child of group items
         driver.findElement(By.cssSelector(".group-items > :nth-child(6) > .children > :nth-child(1) > .children > :nth-child(1)")).click();
         driver.findElement( By.cssSelector( "[data-icon='plus']" ) ).click();
-        // driver.findElement(By.xpath("//*[@class='mat-mini-fab mat-button-base mat-accent']")).click();
 
-        driver.findElement(By.xpath("//*[@id=\"mat-input-5\"]")).sendKeys("campus44");
-        // driver.findElement(By.xpath("mat-option-10")).click();
+
+        String descriptionname="campus44";
+        driver.findElement(By.xpath("//*[@id=\"mat-input-5\"]")).sendKeys(descriptionname);
+
         driver.findElement(By.cssSelector("#mat-select-2")).click();
         driver.findElement(By.xpath("//*[@id=\"mat-option-11\"]/span")).click();
-        driver.findElement(By.xpath("//*[@id=\"mat-input-7\"]")).sendKeys("01/06/2020");
-        driver.findElement(By.xpath("//*[@id=\"mat-input-8\"]")).sendKeys("03/28/2020");
-        driver.findElement(By.xpath("//*[@id=\"mat-input-6\"]")).sendKeys("comment");
+
+        String datenm= "01/01/2020";
+        driver.findElement(By.xpath("//*[@id=\"mat-input-7\"]")).sendKeys(datenm);
+
+        String enddate ="03/28/2020";
+        driver.findElement(By.xpath("//*[@id=\"mat-input-8\"]")).sendKeys(enddate);
+
+        driver.findElement(By.xpath("//*[@id=\"mat-input-6\"]")).sendKeys("command");
+        driver.findElement(By.xpath("//div[@class='mat-tab-label mat-ripple ng-star-inserted']")).click();
+        driver.findElement(By.xpath("//input[@class='mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored ng-untouched ng-pristine ng-invalid']")).sendKeys("1");
+        driver.findElement(By.xpath("//ms-decimal-field//input")).sendKeys("22112");
+        driver.findElement(By.xpath("//button[@class='mat-raised-button mat-button-base mat-basic ng-star-inserted']")).click();
         WebElement saveIcon = driver.findElement( By.cssSelector( "mat-dialog-container [data-icon=\"save\"]" ) );
         saveIcon.click();
         try {
@@ -60,13 +65,20 @@ public class TestNG {
             Assert.fail( "Delete failure", e );
         }
 
+        String  text = driver.findElement(By.xpath("//td[text()='campus44']")).getText();
+        Assert.assertEquals(descriptionname,text);
+
+        String date = driver.findElement(By.xpath("//td[text()='01/01/2020']")).getText();
+        Assert.assertEquals(datenm,date);
+
+        String enddt = driver.findElement(By.xpath("//td[text()='03/28/2020']")).getText();
+        Assert.assertEquals(enddate,enddt);
+
     }
     @AfterClass
     public void quit(){
         driver.quit();
     }
 }
-
-
 
 
