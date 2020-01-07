@@ -33,7 +33,7 @@ public class Project9_CODE {
         driver.findElement(By.cssSelector(".group-items > :nth-child(6) > .children > :nth-child(1) .children > :nth-child(1)")).click();
         driver.findElement(By.cssSelector("[data-icon='plus']")).click();
 
-        String descriptionname="campus44";
+        String descriptionname="CarlaCavli";
         driver.findElement(By.xpath("//*[@id=\"mat-input-5\"]")).sendKeys(descriptionname);
 
        // driver.findElement(By.xpath("//*[@id=\"mat-input-5\"]")).sendKeys("campus44");
@@ -62,7 +62,7 @@ public class Project9_CODE {
             System.out.println("Creation failure!");
         }
 
-        String  text = driver.findElement(By.xpath("//td[text()='campus44']")).getText();
+        String  text = driver.findElement(By.xpath("//td[text()='CarlaCavli']")).getText();
         if(descriptionname.equals(text)) {
                 System.out.println("success");
         }

@@ -39,7 +39,7 @@ public class TestNG {
         driver.findElement( By.cssSelector( "[data-icon='plus']" ) ).click();
 
 
-        String descriptionname="campus44";
+        String descriptionname="CarlaCavli";
         driver.findElement(By.xpath("//*[@id=\"mat-input-5\"]")).sendKeys(descriptionname);
 
         driver.findElement(By.cssSelector("#mat-select-2")).click();
@@ -65,7 +65,7 @@ public class TestNG {
             Assert.fail( "Delete failure", e );
         }
 
-        String  text = driver.findElement(By.xpath("//td[text()='campus44']")).getText();
+        String  text = driver.findElement(By.xpath("//td[text()='CarlaCavli']")).getText();
         Assert.assertEquals(descriptionname,text);
 
         String date = driver.findElement(By.xpath("//td[text()='01/01/2020']")).getText();
