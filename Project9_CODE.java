@@ -36,7 +36,6 @@ public class Project9_CODE {
         String descriptionname="CarlaCavli";
         driver.findElement(By.xpath("//*[@id=\"mat-input-5\"]")).sendKeys(descriptionname);
 
-       // driver.findElement(By.xpath("//*[@id=\"mat-input-5\"]")).sendKeys("campus44");
         driver.findElement(By.cssSelector("#mat-select-2")).click();
         driver.findElement(By.xpath("//*[@id=\"mat-option-11\"]/span")).click();
 
